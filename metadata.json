@@ -1,0 +1,6 @@
+{
+  "name": "NEXORA",
+  "description": "NEXORA - Connect • Create • Discover. Premium modern social entertainment platform featuring full-screen Reels, worldwide Explore, Creator Studio, and built-in AI Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

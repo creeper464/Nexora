@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-brand: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-brand);
+    background-color: #000000;
+    color: #ffffff;
+    /* Bold italic typographic attitude throughout the app as requested */
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  /* Make sure inputs, buttons, and text maintain the bold italic aesthetic */
+  button, input, textarea, select {
+    font-family: inherit;
+    font-style: italic;
+  }
+}
+
+/* Hide scrollbars for ultra-clean mobile-first app feed experience */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Vertical snap reel scrolling */
+.snap-y-mandatory {
+  scroll-snap-type: y mandatory;
+}
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Keyframes for like heart burst animation */
+@keyframes heartBurst {
+  0% {
+    transform: scale(0) rotate(-15deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.3) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1) rotate(5deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.6) translateY(-40px);
+    opacity: 0;
+  }
+}
+
+.animate-heart-burst {
+  animation: heartBurst 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Neon glow utility accents */
+.glow-red {
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.45);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.45);
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.55);
+}
