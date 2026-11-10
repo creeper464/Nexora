@@ -50,7 +50,8 @@ export const ReelsFeed: React.FC<ReelsFeedProps> = ({
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const lastTapRef = useRef<number>(0);
-
+  const touchStartY = useRef<number>(0);
+  const suppressClickRef = useRef(false);
   const filteredReels =
     feedTab === 'following'
       ? reels.filter((r) => r.isFollowing)
@@ -75,20 +76,43 @@ export const ReelsFeed: React.FC<ReelsFeedProps> = ({
       }
     });
   }, [currentIndex, isMuted, filteredReels]);
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  touchStartY.current = e.touches[0].clientY;
+  suppressClickRef.current = false;
+};
 
-  const handleNext = () => {
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+  const touchEndY = e.changedTouches[0].clientY;
+  const difference = touchStartY.current - touchEndY;
+
+  if (Math.abs(difference) < 50) return;
+
+  suppressClickRef.current = true;
+
+  if (difference > 0) {
+    handleNext();
+  } else {
+    handlePrev();
+  }
+
+  setTimeout(() => {
+    suppressClickRef.current = false;
+  }, 400);
+};
+    const handleNext = () => {
     if (currentIndex < filteredReels.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     }
   };
 
-  const handlePrev = () => {
+   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     }
   };
 
-  const handleVideoClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleVideoClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (suppressClickRef.current) return;
     const now = Date.now();
     const DOUBLE_TAP_DELAY = 300;
 
@@ -213,6 +237,8 @@ export const ReelsFeed: React.FC<ReelsFeedProps> = ({
       <div
         className="relative w-full h-full max-w-[430px] mx-auto bg-zinc-950 flex items-center justify-center overflow-hidden"
         onClick={handleVideoClick}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {/* HTML5 Video element */}
         <video
