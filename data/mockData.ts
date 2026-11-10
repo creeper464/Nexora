@@ -73,7 +73,7 @@ export const SAMPLE_REELS: Reel[] = [
   {
     id: 'reel_1',
     creator: CREATORS.marcus,
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     posterUrl: '/src/assets/images/nexora_cover_cyber_1793842294301.jpg',
     caption: 'Live in Tokyo! Testing the new sub-bass frequencies on the main stage crowd. Turn your headphones up! 🔥💥 #CyberSound #TokyoStage #NexoraBeats #BassDrop #MusicProducer',
     soundTitle: 'Tokyo Midnight (VIP Master)',
@@ -128,7 +128,7 @@ export const SAMPLE_REELS: Reel[] = [
   {
     id: 'reel_2',
     creator: CREATORS.zara,
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
+    videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     posterUrl: '/src/assets/images/nexora_avatar_zara_1793842295547.jpg',
     caption: 'Cyberpunk Fall 2026 Collection preview: Waterproof obsidian jackets with built-in LED optical threading. Rate this look 1-10 🖤⚡ #NexoraStyle #Techwear #DarkAesthetic #TokyoFashion',
     soundTitle: 'Vexing Pulse (Slowed + Reverb)',
@@ -170,7 +170,7 @@ export const SAMPLE_REELS: Reel[] = [
   {
     id: 'reel_3',
     creator: CREATORS.elena,
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+    videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     posterUrl: '/src/assets/images/nexora_avatar_elena_1793842293587.jpg',
     caption: 'Rainy neon night in Shibuya. Shot entirely on anamorphic lenses with 8K raw sensor. Which color grading do you prefer: Red Dawn or Cyber Gold? 🌧️📸 #ShibuyaNights #Anamorphic #Cinematography #NexoraVisuals',
     soundTitle: 'Rain Over Neo Tokyo',
@@ -202,7 +202,7 @@ export const SAMPLE_REELS: Reel[] = [
   {
     id: 'reel_4',
     creator: CREATORS.marcus,
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     posterUrl: '/src/assets/images/nexora_cover_cyber_1793842294301.jpg',
     caption: 'Full orchestra meets heavy analog synth breakdown. Took 4 months to engineer this 40-track mix! Headphone warning! 🎻🎛️ #ProducerTok #StudioLife #NexoraCreators #AudioEngineering',
     soundTitle: 'Symphony in Overdrive',
