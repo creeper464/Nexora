@@ -449,6 +449,7 @@ export default function App() {
                   userPosts={posts.filter((p) => p.creator.id === (selectedCreator?.id || currentUser.id))}
                   savedReels={reels.filter((r) => r.isSaved)}
                   onSelectReel={(reel) => setActiveTab('home')}
+                  onSelectPost={(post) => setSelectedPost(post)}
                   onOpenSettings={() => setSettingsOpen(true)}
                   onOpenSparks={(user) => setSparksState({ isOpen: true, creator: user })}
                   onToggleFollow={handleToggleFollow}
