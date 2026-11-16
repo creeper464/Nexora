@@ -56,7 +56,7 @@ export default function App() {
     reel: null,
   });
   const [selectedCreator, setSelectedCreator] = useState<User | null>(null);
-
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   // App core state
   const [currentUser, setCurrentUser] = useState<User>(CURRENT_USER);
   const [reels, setReels] = useState<Reel[]>(SAMPLE_REELS);
