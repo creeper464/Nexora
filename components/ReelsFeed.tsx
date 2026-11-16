@@ -208,7 +208,7 @@ export const ReelsFeed: React.FC<ReelsFeedProps> = ({
       {/* Mute / Unmute Button */}
       <button
         onClick={() => setIsMuted(!isMuted)}
-        className="absolute top-3.5 right-4 z-30 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center border border-white/10 hover:bg-black/60 transition-colors"
+        className="absolute top-3.5 left-4 z-30 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center border border-white/10 hover:bg-black/60 transition-colors"
       >
         {isMuted ? <VolumeX className="w-5 h-5 text-red-400" /> : <Volume2 className="w-5 h-5 text-yellow-400" />}
       </button>
