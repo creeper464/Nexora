@@ -27,6 +27,7 @@ interface ProfileViewProps {
   userPosts: Post[];
   savedReels: Reel[];
   onSelectReel: (reel: Reel) => void;
+  onSelectPost: (post: Post) => void;
   onOpenSettings: () => void;
   onOpenSparks: (user: User) => void;
   onToggleFollow: (userId: string) => void;
@@ -40,6 +41,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
   userPosts,
   savedReels,
   onSelectReel,
+  onSelectPost,
   onOpenSettings,
   onOpenSparks,
   onToggleFollow,
@@ -310,7 +312,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
             {userPosts.map((post) => (
               <div
                 key={post.id}
-                className="relative aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800"
+                onClick={() => onSelectPost(post)}
+                className="relative aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer active:scale-95 transition-transform"
               >
                 <img
                   src={post.mediaUrl}
