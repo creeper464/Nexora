@@ -11,6 +11,11 @@ import {
   Monitor,
   Flame,
   Check,
+  ArrowLeft,
+  Heart,
+  MessageCircle,
+  Share2,
+  Bookmark,
 } from 'lucide-react';
 import { NexoraLogo } from './components/NexoraLogo';
 import { ReelsFeed } from './components/ReelsFeed';
@@ -306,7 +311,38 @@ export default function App() {
       );
     }, 1500);
   };
+   // Like Post Handler
+const handleToggleLikePost = (postId: string) => {
+  setPosts((prev) =>
+    prev.map((p) => {
+      if (p.id !== postId) return p;
 
+      const isLiked = !p.isLiked;
+
+      return {
+        ...p,
+        isLiked,
+        likesCount: isLiked
+          ? p.likesCount + 1
+          : p.likesCount - 1,
+      };
+    })
+  );
+
+  setSelectedPost((prev) => {
+    if (!prev || prev.id !== postId) return prev;
+
+    const isLiked = !prev.isLiked;
+
+    return {
+      ...prev,
+      isLiked,
+      likesCount: isLiked
+        ? prev.likesCount + 1
+        : prev.likesCount - 1,
+    };
+  });
+};
   const unreadNotifs = notifications.filter((n) => !n.isRead).length;
 
   return (
@@ -400,6 +436,95 @@ export default function App() {
                 : 'w-full bg-black'
             }`}
           >
+            {/* Full Screen Post Detail */}
+{selectedPost && (
+  <div className="absolute inset-0 z-[60] bg-black flex flex-col overflow-y-auto">
+    {/* Header */}
+    <div className="h-14 px-4 flex items-center gap-4 border-b border-zinc-800 shrink-0">
+      <button
+        onClick={() => setSelectedPost(null)}
+        className="p-2 text-white"
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
+
+      <h2 className="text-lg font-black italic">
+        Post Details
+      </h2>
+    </div>
+
+    {/* Creator Info */}
+    <div className="p-4 flex items-center gap-3">
+      <img
+        src={selectedPost.creator.avatar}
+        alt={selectedPost.creator.name}
+        className="w-11 h-11 rounded-full object-cover"
+      />
+      <div>
+        <p className="font-bold">{selectedPost.creator.name}</p>
+        <p className="text-xs text-zinc-400">
+          {selectedPost.creator.handle} · {selectedPost.createdAt}
+        </p>
+      </div>
+    </div>
+
+    {/* Post Media */}
+    {selectedPost.mediaType === 'video' ? (
+      <video
+        src={selectedPost.mediaUrl}
+        controls
+        playsInline
+        className="w-full max-h-[65vh] object-contain bg-zinc-950"
+      />
+    ) : (
+      <img
+        src={selectedPost.mediaUrl}
+        alt="Post"
+        className="w-full max-h-[65vh] object-contain bg-zinc-950"
+      />
+    )}
+
+    {/* Actions */}
+    <div className="px-4 pt-4 flex items-center gap-5">
+      <button
+        onClick={() => handleToggleLikePost(selectedPost.id)}
+        className={selectedPost.isLiked ? 'text-red-500' : 'text-white'}
+      >
+        <Heart
+          className="w-7 h-7"
+          fill={selectedPost.isLiked ? 'currentColor' : 'none'}
+        />
+      </button>
+
+      <MessageCircle className="w-7 h-7 text-white" />
+
+      <button
+        onClick={() => showToast('Post sharing coming soon!')}
+        className="text-white"
+      >
+        <Share2 className="w-7 h-7" />
+      </button>
+    </div>
+
+    {/* Likes and Caption */}
+    <div className="px-4 py-3">
+      <p className="font-black">
+        {selectedPost.likesCount.toLocaleString()} likes
+      </p>
+
+      <p className="mt-2 text-sm">
+        <span className="font-black">
+          {selectedPost.creator.handle}
+        </span>{' '}
+        {selectedPost.caption}
+      </p>
+
+      <p className="text-xs text-zinc-500 mt-3">
+        {selectedPost.commentsCount} comments
+      </p>
+    </div>
+  </div>
+)}
             {/* Main Active Tab Views */}
             <div className="flex-1 overflow-hidden relative">
               {activeTab === 'home' && (
